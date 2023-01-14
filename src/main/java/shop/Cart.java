@@ -1,5 +1,6 @@
 package shop;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -10,10 +11,7 @@ public class Cart {
 
     public Cart() {
         setCartID();
-    }
-
-    public int getCartID() {
-        return cartID;
+        products = new ArrayList<>();
     }
 
     public void setCartID() {

@@ -36,14 +36,8 @@ public class Product {
         this.price = price;
     }
 
-    public void update(Product modProduct) {
-        this.setProductID(modProduct.getProductID());
-        this.setName(modProduct.getName());
-        this.setPrice(modProduct.getPrice());
-    }
-
     @Override
     public String toString() {
-        return "productID: " + String.valueOf(productID) + "Name: " + name + "price: " + String.valueOf(price) + "/n";
+        return "productID: " + String.valueOf(productID) + ", Name: " + name + ", Price: " + String.valueOf(price) + "\n";
     }
 }

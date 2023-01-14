@@ -9,6 +9,7 @@ public class Admin {
     public Admin(int adminID, String name, Shop shop) {
         this.adminID = adminID;
         this.name = name;
+        this.shop = shop;
     }
 
     public int getAdminID() {
@@ -36,21 +37,34 @@ public class Admin {
     }
 
     public void addProduct(Product product) {
-        shop.addProduct(product);
+        this.shop.addProduct(product);
     }
 
     public void removeProduct(Product product) {
-        shop.removeProduct(product);
+        this.shop.removeProduct(product);
     }
 
     public void updateProduct(Product product, Product modProduct) {
-        shop.updateProduct(product, modProduct);
+        this.shop.updateProduct(product, modProduct);
+    }
+
+    public String seeProductsInShop() {
+        return this.shop.getProductsList();
     }
 
     public String makeShipment(Product product, int quantity) {
         for (Product targetProduct: shop.products) {
             if(targetProduct.equals(product)) {
                 return "Shipment confirmed for " + String.valueOf(quantity) + " " + product.getName();
+            }
+        }
+        return "Product Not Found";
+    }
+
+    public String confirmDelivery(Product product, int quantity) {
+        for (Product targetProduct: shop.products) {
+            if(targetProduct.equals(product)) {
+                return "Delivery confirmed for " + String.valueOf(quantity) + " " + product.getName();
             }
         }
         return "Product Not Found";

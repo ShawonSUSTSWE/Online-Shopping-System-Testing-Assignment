@@ -4,14 +4,14 @@ public class Customer {
 
     private int customerID;
     private String name;
-    private String cardNo;
+    private String address;
     private String phoneNo;
     private Cart cart;
 
-    public Customer(int customerID, String name, String cardNo, String phoneNo) {
+    public Customer(int customerID, String name, String address, String phoneNo) {
         this.customerID = customerID;
         this.name = name;
-        this.cardNo = cardNo;
+        this.address = address;
         this.phoneNo = phoneNo;
     }
 
@@ -23,12 +23,12 @@ public class Customer {
         this.customerID = customerID;
     }
 
-    public String getCardNo() {
-        return cardNo;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getName() {
@@ -63,11 +63,11 @@ public class Customer {
         cart.removeFromCart(product);
     }
 
-    public void seeAllItemsInCart() {
-        cart.seeAllItemsInCart();
+    public String seeAllItemsInCart() {
+        return cart.seeAllItemsInCart();
     }
 
-    public void checkOut() {
-        new Payment().pay(cart);
+    public String checkOut(String cardType, String cardNo) {
+        return new Payment(this.getCustomerID(), this.getName(), cardType, cardNo).pay(cart);
     }
 }
